@@ -1,15 +1,19 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.guobin211.rsxintellij</id>
-    <name>rsx-intellij</name>
+    <name>Rsx-IJ</name>
     <vendor>guobin211</vendor>
-
     <depends>com.intellij.modules.platform</depends>
-
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.guobin211.rsxintellij.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+
+        <fileType
+          name="rsx"
+          implementationClass="com.github.guobin211.rsxintellij.rsx.SimpleFileType"
+          fieldName="INSTANCE"
+          language="rsx"
+          extensions="rsx"/>
     </extensions>
 
     <applicationListeners>
