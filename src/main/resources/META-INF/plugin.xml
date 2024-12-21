@@ -6,7 +6,7 @@
     <description><![CDATA[
     <!-- Plugin description -->
     rsx文件支持
-    <br>
+    <br/>
     rsx是一种类似astro的服务端渲染技术，服务端采用rust代码实现。
     <!-- Plugin description end -->
   ]]></description>
