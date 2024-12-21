@@ -1,0 +1,6 @@
+按如下规则为.rsx生成bnf文件
+1、rsx文件内容分为4个代码块。分别是rust代码块，js代码块，html代码块，和css代码块。代码块以外的内容忽略。
+2、rust代码块在`<rust>`和`</rust>`之间，<rust>和</rust>单独站一行，并且在行首。
+3、js代码块在<script>和</script>之间，<script>和</script>单独站一行，并且在行首。
+4、html代码块在<template>和</template>之间，<template>和</template>单独站一行，并且在行首。template标签内的内容不能再出现<script>或者<style>或者<template>。
+5、css代码块在<style>和</style>之间，<style>和</style>单独站一行，并且在行首。

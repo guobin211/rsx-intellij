@@ -1,0 +1,49 @@
+// 按如下规则生成bnf文件, rsx文件内容分为4块，分别是rust代码块，js代码块，html代码块，和css代码块, 代码块之间用换行符分隔.
+// rust代码在---和---之间，js代码在<script>和</script>之间，html代码在<template>和</template>之间，css代码在<style>和</style>之间.
+// 所有的代码块最多出现一次，且出现的顺序是rust代码块，js代码块，html代码块，css代码块.
+// ---和<script>和<template>和<style>都单独站一行，并且在行首
+
+{
+  parserClass="com.github.guobin211.rsxij.RsxParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+  psiClassPrefix="Rsx"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.intellij.sdk.language.psi"
+  psiImplPackage="org.intellij.sdk.language.psi.impl"
+  elementTypeHolderClass="org.intellij.sdk.language.psi.RsxTypes"
+  elementTypeClass="org.intellij.sdk.language.psi.RsxElementType"
+  tokenTypeClass="org.intellij.sdk.language.psi.RsxTokenType"
+}
+
+{
+  tokens = [
+    RUST_START = "---";
+    RUST_END = "---";
+    JS_START = "<script>";
+    JS_END = "</script>";
+    HTML_START = "<template>";
+    HTML_END = "</template>";
+    CSS_START = "<style>";
+    CSS_END = "</style>";
+    RUST_CODE = "RUST_CODE";
+    JS_CODE = "JS_CODE";
+    HTML_CODE = "HTML_CODE";
+    CSS_CODE = "CSS_CODE";
+    WHITESPACE = "WHITESPACE";
+    BAD_CHARACTER = "BAD_CHARACTER";
+  ]
+}
+
+rsxFile ::= rustBlock ws jsBlock ws htmlBlock ws cssBlock
+
+rustBlock ::= RUST_START rustCode RUST_END
+jsBlock ::= JS_START jsCode JS_END
+htmlBlock ::= HTML_START htmlCode HTML_END
+cssBlock ::= CSS_START cssCode CSS_END
+
+rustCode ::= {ANY_CHARACTER}*
+jsCode ::= {ANY_CHARACTER}*
+htmlCode ::= {ANY_CHARACTER}*
+cssCode ::= {ANY_CHARACTER}*
+
+ws ::= WHITESPACE*

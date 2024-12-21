@@ -138,6 +138,8 @@ tasks {
     }
 }
 
+sourceSets["main"].java.srcDirs("src/main/gen")
+
 intellijPlatformTesting {
     runIde {
         register("runIdeForUiTests") {

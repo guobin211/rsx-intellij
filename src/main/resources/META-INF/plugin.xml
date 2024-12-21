@@ -1,22 +1,19 @@
 <idea-plugin>
-    <id>com.github.guobin211.rsxintellij</id>
+    <id>com.github.guobin211.rsxij</id>
     <name>Rsx-IJ</name>
     <vendor>guobin211</vendor>
     <depends>com.intellij.modules.platform</depends>
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
+    <description><![CDATA[
+    <!-- Plugin description -->
+    rsx文件语法支持。rsx文件是一种类似astro的服务端渲染文件，服务端采用rust代码实现。
+    <!-- Plugin description end -->
+  ]]></description>
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.guobin211.rsxintellij.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-
         <fileType
           name="rsx"
-          implementationClass="com.github.guobin211.rsxintellij.rsx.SimpleFileType"
+          implementationClass="com.github.guobin211.rsxij.RsxFileType"
           fieldName="INSTANCE"
           language="rsx"
           extensions="rsx"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.guobin211.rsxintellij.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
 </idea-plugin>
